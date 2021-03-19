@@ -26,7 +26,7 @@ puts:
         mov     bx, 0x0000                  ; ページ番号と文字色を0に設定
         cld                                 ; DF = 0; アドレス加算
 .10L:
-        lobsb                               ; AL = *SI++
+        lodsb                               ; AL = *SI++
 
         cmp     al, 0                       ; if(AL == 0)
         je      .10E                        ; break
