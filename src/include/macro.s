@@ -9,3 +9,10 @@
         add sp, (__BITS__ >> 3) * (%0 - 1)
     %endif
 %endmacro
+
+struc drive
+    .no resw 1      ; ドライブ番号
+    .cyln resw 1    ; シリンダ
+    .head resw 1    ; ヘッド
+    .sect resw 1    ; セクタ
+endstruc
