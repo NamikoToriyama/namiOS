@@ -10,3 +10,5 @@
 
     E820_RECORD_SIZE    equ     20                      ; メモリ情報を格納する領域のサイズ
     KERNEL_LOAD         equ     0x0010_1000
+
+    VECT_BASE           equ     0x0010_0000
