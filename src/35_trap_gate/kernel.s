@@ -1,6 +1,7 @@
 ; *******************************
 ; マクロ
 ; *******************************
+%define		USE_SYSTEM_CALL
 %include    "../include/define.s"
 %include    "../include/macro.s"
 
@@ -62,6 +63,8 @@ kernel:
     set_vect    0x20, int_timer             ; 割り込み処理の登録:タイマー
     set_vect    0x21, int_keyboard          ; 割り込み処理の登録:KBC
     set_vect    0x28, int_rtc               ; 割り込み処理の登録:RTC
+	set_vect    0x81, trap_gate_81, word	0xEF00          ; トラップゲートの登録:一文字出力
+	set_vect    0x82, trap_gate_82, word  0xEF00          ; トラップゲートの登録：点の描画
 
     ;------------------------------------------
     ; デバイスの割り込み許可
@@ -154,7 +157,7 @@ RTC_TIME: dd 0
 %include	"../modules/protect/timer.s"
 %include	"../modules/protect/draw_rotation_bar.s"
 %include	"../modules/protect/call_gate.s"
-
+%include	"../modules/protect/trap_gate.s"
 ;***********************************************************
 ;  パディング（このファイルは8Kバイトとする）
 ;***********************************************************
