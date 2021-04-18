@@ -19,7 +19,7 @@ draw_char:
         ; テストアンドセット
         ;-----------------------------------------
 %ifdef	USE_TEST_AND_SET
-        cdecl test_and_set, IN_USE
+        cdecl test_and_set, IN_USE                  ; リソースの空き待ち
 %endif
 
         ;-----------------------------------------
