@@ -12,3 +12,8 @@ bochs -q -f ../../env/.bochsrc -rc ../../env/cmd.init
 ```
 ../../env/mk.sh
 ```
+
+## プログラム終了
+```
+ctl + alt + End(fn + →)
+```
