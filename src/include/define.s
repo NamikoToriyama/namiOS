@@ -34,3 +34,6 @@
     CR3_TASK_5			equ		0x0020_2000		; ページ変換テーブル：タスク5用
     CR3_TASK_6			equ		0x0020_4000		; ページ変換テーブル：タスク6用
     
+    ATTR_VOLUME_ID      equ     0x08
+    ATTR_DIRECTORY      equ     0x10
+    ATTR_ARCHIVE        equ     0x20
