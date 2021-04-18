@@ -1,19 +1,3 @@
-struc drive
-    .no resw 1      ; ドライブ番号
-    .cyln resw 1    ; シリンダ
-    .head resw 1    ; ヘッド
-    .sect resw 1    ; セクタ
-endstruc
-
-%define		RING_ITEM_SIZE		(1 << 4)
-%define		RING_INDEX_MASK		(RING_ITEM_SIZE - 1)
-; リングバッファ
-struc	ring_buff
-	.rp	resd	1						; 書き込み位置
-	.wp		resd	1						; 読み込み位置
-	.item	resb	RING_ITEM_SIZE			; バッファ
-endstruc
-
 %macro cdecl 1-*.nolist
     %rep %0 - 1
         push %{-1:-1}
@@ -88,3 +72,45 @@ endstruc
 		pop		eax
 %endmacro
 
+
+;-----------------------------------------------
+;	構造体
+;-----------------------------------------------
+struc drive
+    .no resw 1      ; ドライブ番号
+    .cyln resw 1    ; シリンダ
+    .head resw 1    ; ヘッド
+    .sect resw 1    ; セクタ
+endstruc
+
+%define		RING_ITEM_SIZE		(1 << 4)
+%define		RING_INDEX_MASK		(RING_ITEM_SIZE - 1)
+; リングバッファ
+struc	ring_buff
+	.rp	resd	1						; 書き込み位置
+	.wp		resd	1						; 読み込み位置
+	.item	resb	RING_ITEM_SIZE			; バッファ
+endstruc
+
+
+;-----------------------------------------------
+;	バラ曲線描画パラメータ
+;-----------------------------------------------
+struc rose
+		.x0				resd	1				; 左上座標：X0
+		.y0				resd	1				; 左上座標：Y0
+		.x1				resd	1				; 右下座標：X1
+		.y1				resd	1				; 右下座標：Y1
+
+		.n				resd	1				; 変数：n
+		.d				resd	1				; 変数：d
+
+		.color_x		resd	1				; 描画色：X軸
+		.color_y		resd	1				; 描画色：Y軸
+		.color_z		resd	1				; 描画色：枠
+		.color_s		resd	1				; 描画色：文字
+		.color_f		resd	1				; 描画色：グラフ描画色
+		.color_b		resd	1				; 描画色：グラフ消去色
+
+		.title			resb	16				; タイトル
+endstruc
