@@ -19,3 +19,4 @@
     SP_TASK_0           equ     STACK_BASE + (STACK_SIZE * 1)
     SP_TASK_1           equ     STACK_BASE + (STACK_SIZE * 2)
     SP_TASK_2           equ     STACK_BASE + (STACK_SIZE * 3)
+    SP_TASK_3           equ     STACK_BASE + (STACK_SIZE * 4)
