@@ -71,3 +71,20 @@ endstruc
 		pop		edi
 		pop		eax
 %endmacro
+
+; コールゲートに関数を登録する
+%macro	set_gate	2-*.nolist
+		push	eax
+		push	edi
+
+		mov		edi, %1			; ディスクリプタアドレス
+		mov		eax, %2			; ベースアドレス
+
+		mov		[edi + 0], ax	; ベース
+		shr		eax, 16
+		mov		[edi + 6], ax	; ベース
+
+		pop		edi
+		pop		eax
+%endmacro
+
