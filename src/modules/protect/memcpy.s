@@ -3,10 +3,8 @@ memcpy:
         ; スタックフレームの構築
         ; ---------------------------------
 
-
-
-        push    edp
-        mov     edp, esp
+        push    ebp
+        mov     ebp, esp
 
         ; ---------------------------------
         ; レジスタの保存
@@ -19,9 +17,9 @@ memcpy:
         ; バイト単位でのコピー
         ; ---------------------------------
         cld
-        mov     edi, [edp + 4]
-        mov     esi, [edp + 6]
-        mov     ecx, [edp + 8]
+        mov     edi, [ebp + 4]
+        mov     esi, [ebp + 6]
+        mov     ecx, [ebp + 8]
 
         rep     movsb      
 
@@ -35,7 +33,7 @@ memcpy:
         ; ---------------------------------
         ; スタックフレームの破棄
         ; ---------------------------------
-        mov     esp, edp
-        pop     edp
+        mov     esp, ebp
+        pop     ebp
 
         ret
